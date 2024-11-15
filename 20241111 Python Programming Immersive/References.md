@@ -11,8 +11,10 @@
 
 * Python Request - https://docs.python-requests.org/en/latest/index.html
 * Python Visualization - https://matplotlib.org/
+* Python Pandas  https://pandas.pydata.org/
 
 - HTML Color Codes - https://htmlcolorcodes.com/
 - The Rick and Morty API - https://rickandmortyapi.com/
 - Yelp API - https://docs.developer.yelp.com/docs/fusion-intro
 
+- LeetCodeSquad - https://generalassemb.ly/education/ga-alumni-leetcodesquad-study-sessions-for-developers/online
