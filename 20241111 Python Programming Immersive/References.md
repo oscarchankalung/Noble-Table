@@ -11,7 +11,8 @@
 
 * Python Request - https://docs.python-requests.org/en/latest/index.html
 * Python Visualization - https://matplotlib.org/
-* Python Pandas  https://pandas.pydata.org/
+* Python Pandas - https://pandas.pydata.org/
+* Python BeautifulSoup - https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 
 - HTML Color Codes - https://htmlcolorcodes.com/
 - The Rick and Morty API - https://rickandmortyapi.com/
