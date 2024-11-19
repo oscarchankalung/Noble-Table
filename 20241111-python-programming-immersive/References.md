@@ -11,7 +11,8 @@
 
 * Python Request - https://docs.python-requests.org/en/latest/index.html
 * Python Visualization - https://matplotlib.org/
-* Python Pandas  https://pandas.pydata.org/
+* Python Pandas - https://pandas.pydata.org/
+* Python Seaborn - https://seaborn.pydata.org/examples/index.html
 
 - HTML Color Codes - https://htmlcolorcodes.com/
 - The Rick and Morty API - https://rickandmortyapi.com/
