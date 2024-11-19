@@ -12,7 +12,11 @@
 * Python Request - https://docs.python-requests.org/en/latest/index.html
 * Python Visualization - https://matplotlib.org/
 * Python Pandas - https://pandas.pydata.org/
+<<<<<<< HEAD:20241111-python-programming-immersive/References.md
 * Python Seaborn - https://seaborn.pydata.org/examples/index.html
+=======
+* Python BeautifulSoup - https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+>>>>>>> e6de918d386f53ea95ae665d47fceee0fa8bd7a0:20241111 Python Programming Immersive/References.md
 
 - HTML Color Codes - https://htmlcolorcodes.com/
 - The Rick and Morty API - https://rickandmortyapi.com/
