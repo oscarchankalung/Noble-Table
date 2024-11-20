@@ -24,8 +24,11 @@ from shop import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("hello/", views.index),
-    path("", views.CarListView.as_view(), name="car_list"),
+    path("cars/", views.CarListView.as_view(), name="car_list"),
     path("car/<int:pk>/", views.CarDetailView.as_view(), name="car_detail"),
+    path("car/create/", views.CarCreateView.as_view(), name="car_create"),
+    path("car/update/<int:pk>/", views.CarUpdateView.as_view(), name="car_update"),
+    path("car/delete/<int:pk>/", views.CarDeleteView.as_view(), name="car_delete"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

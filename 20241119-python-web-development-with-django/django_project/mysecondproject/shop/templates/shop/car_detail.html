@@ -11,10 +11,8 @@
   {% if object.image %}
     <img src="{{ object.image.url }}" alt="{{ object.make }} {{ object.model }} {{ object.year.year }}"/>
   {% endif %}
-  <p>
-    <a href={% url "car_list" %}>
-      <button type="button">Go Back to List</button>
-    </a>
-  </p>
+  <p><a href={% url "car_list" %}><button type="button">Go Back to List</button></a></p>
+  <p><a href={% url "car_update" pk=object.id %}><button type="button">Update Car</button></a></p>
+  <p><a href={% url "car_delete" pk=object.id %}><button type="button">Delete Car</button></a></p>
 </body>
 </html>

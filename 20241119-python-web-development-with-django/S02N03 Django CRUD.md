@@ -37,6 +37,10 @@ class PostUpdateView(UpdateView):
         context["heading"] = f"Update your Post: {self.object.title}"
         context["button_value"] = "Update"
         return context
+
+class PostDeleteView(DeleteView):
+    model = Post
+    success_url = reverse_lazy("post_list")
 ```
 
 ### `{project}/{app}/urls.py`
@@ -48,6 +52,18 @@ urlpatterns = [
     path("post/update/<int:pk>/", views.PostUpdateView.as_view(), name="post_update"),
     path("post/delete/<int:pk>/", views.PostDeleteView.as_view(), name="post_delete"),
 ]
+```
+### `{project}/{app}/templates/{app}/post_list.html`
+
+```html
+<p><a href={% url "post_create" %}><button type="button">Create Post</button></a></p>
+```
+
+### `{project}/{app}/templates/{app}/post_detail.html`
+
+```html
+<p><a href={% url "post_update" pk=object.id %}><button type="button">Update Post</button></a></p>
+<p><a href={% url "post_delete" pk=object.id %}><button type="button">Delete Post</button></a></p>
 ```
 
 ### `{project}/{app}/templates/{app}/post_form.html`
