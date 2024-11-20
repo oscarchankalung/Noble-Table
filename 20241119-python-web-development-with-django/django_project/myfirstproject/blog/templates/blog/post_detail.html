@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post Detail</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Detail</title>
 </head>
 <body>
-  <h1>{{ object.title }}</h1>
-  <h3>{{ object.content }}</h3>
-  <h3>{{ object.slug }}</h3>
-  {% if object.image %}
-    <img src="{{ object.image.url }}" alt="{{ object.title }}">
-  {% endif %}
-  <a href={% url "post_list" %}>
-    <button type="button">Go back to list</button>
-  </a>
+    <h1>{{ object.title }}</h1>
+    <h3>{{ object.content }}</h3>
+    <h3>{{ object.slug }}</h3>
+    {% if object.image %}
+        <img src="{{ object.image.url }}" alt="{{ object.title }}">
+    {% endif %}
+    <p><a href={% url "post_list" %}><button type="button">Go back to list</button></a></p>
+    <p><a href={% url "post_update" pk=object.id %}><button type="button">Update post</button></a></p>
+    <p><a href={% url "post_delete" pk=object.id %}><button type="button">Delete post</button></a></p>
 </body>
 </html>

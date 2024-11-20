@@ -1,4 +1,4 @@
-# S01N02 Django Initialization
+# Django Initialization
 
 ## Introduction
 

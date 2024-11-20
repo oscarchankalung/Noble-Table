@@ -23,9 +23,12 @@ from blog import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("hello/", views.index),
-    path("", views.PostListView.as_view(), name="post_list"),
-    path("post/<int:pk>/", views.PostDetailView.as_view(), name="post_detail")
+    path("", views.index),
+    path("posts/", views.PostListView.as_view(), name="post_list"),
+    path("post/<int:pk>/", views.PostDetailView.as_view(), name="post_detail"),
+    path("post/create/", views.PostCreateView.as_view(), name="post_create"),
+    path("post/update/<int:pk>/", views.PostUpdateView.as_view(), name="post_update"),
+    path("post/delete/<int:pk>/", views.PostDeleteView.as_view(), name="post_delete"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
