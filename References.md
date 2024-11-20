@@ -25,5 +25,5 @@
 
 ## Django
 
-https://docs.djangoproject.com/en/5.1/faq/
-https://docs.djangoproject.com/en/5.1/ref/models/fields/
+Django FAQ - https://docs.djangoproject.com/en/5.1/faq/
+Django Model Field - https://docs.djangoproject.com/en/5.1/ref/models/fields/

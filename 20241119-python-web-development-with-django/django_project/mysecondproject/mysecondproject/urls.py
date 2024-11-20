@@ -1,5 +1,5 @@
 """
-URL configuration for myfirstproject project.
+URL configuration for mysecondproject project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -17,16 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls.static import static
-from django.conf import settings
-from blog import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("hello/", views.index),
-    path("", views.PostListView.as_view(), name="post_list"),
-    path("post/<int:pk>/", views.PostDetailView.as_view(), name="post_detail")
 ]
-
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
