@@ -25,8 +25,6 @@
 
 ## Setting Up An Environment
 
-### Code
-
 ```bash
 # make directory
 mkdir
@@ -41,13 +39,11 @@ source venv/bin/activate
 pip install django
 
 # install python packages, django, for images
-pip install pillow (for python images)
+pip install pillow
 
 # list all packages and write to "requirements.tsx"
 pip freeze > requirements.txt
 ```
-
-### Note
 
 - install virtual environment once per new project
 - close the door to the framework, django
@@ -60,8 +56,6 @@ pip freeze > requirements.txt
 
 ## Starting A Project
 
-### Code
-
 ```bash
 # create a project using commend, django-admin
 django-admin startproject
@@ -73,9 +67,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-### Note
-
-#### `project/core/__init__.py` 
+### `project/core/__init__.py` 
 
 - in the core is usually empty
 - create module with __init__
@@ -83,7 +75,7 @@ python manage.py createsuperuser
 - request from asgi.py or wsgi.py are redirected to urls.py
 - asgi and wsgi are entry points
 
-#### `project/core/settings.py`
+### `project/core/settings.py`
 
 - SECRET_KEY is stored at global environment
 - DEBUG should be changed to False in production
@@ -99,7 +91,7 @@ python manage.py createsuperuser
 - STATIC_URL is usually changed in production mode
 - DEFAULT_AUTO_FIELD allows custom definiation of primary key, e.g. Social 
 
-#### `project/core/settings.py > INSTALLED_APPS`
+### `project/core/settings.py > INSTALLED_APPS`
 
 `django.contrib.sessions`
 lock you out for 5 mins for security purposes
@@ -108,7 +100,7 @@ keep the cart for 2 weeks
 `django.contrib.staticfiles`
 javascript, image, CSS
 
-#### `project/manage.py`
+### `project/manage.py`
 
 * define basic py command
 * allow customerize your command
@@ -116,8 +108,6 @@ javascript, image, CSS
 * change_roles
 
 ## Starting An App
-
-### Code
 
 ```bash
 # create an app using 
@@ -138,26 +128,4 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "NEW_APP",
 ]
-```
-
-## Create A Model
-
-### Note
-
-* update schema
-* generate database migrations
-* Do not make more than 5 modules for one app
-
-1. Create a view on `app/views.py`
-1. Add url pattern on `project/urls.py`
-1. Add template on `app/templates/app/template.html`
-
-### Code
-
-```bash
-#
-python manage.py makemigrations
-
-#
-python manage.py migrate
 ```

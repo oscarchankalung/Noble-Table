@@ -17,7 +17,16 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
+from shop import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("hello", views.index),
+    path("", views.CarListView.as_view(), name="car_list"),
+    path("car/<int:pk>/", views.CarDetailView.as_view(), name="car_detail"),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
