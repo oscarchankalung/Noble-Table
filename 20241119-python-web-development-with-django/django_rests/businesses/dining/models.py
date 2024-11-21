@@ -11,7 +11,7 @@ class Restaurant(models.Model):
     city = models.CharField(max_length=200, blank=True) # 'New  York' or blank
     zip_code = models.CharField(max_length=5, blank=True) # '12345' or blank
     state = models.CharField(max_length=2, blank=True) # 'NY' or blank
-    phone = models.CharField(max_length=14) # '(212) 510-7714' or blank
+    phone = models.CharField(max_length=14, blank=True) # '(212) 510-7714' or blank
 
     def __str__(self):
         return f"{self.name}, {self.city}"
