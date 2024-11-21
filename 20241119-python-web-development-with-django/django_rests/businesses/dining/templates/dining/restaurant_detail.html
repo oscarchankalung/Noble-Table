@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+</head>
+<body>
+    <h1>{{ object.name }}</h1>
+    <h3>{{ object.rating }} {{ object.review_count }} review</h3>
+    <h3>{{ object.price }} {{ object.cuisine }}</h3>
+    <a href={% url "restaurant_list" %}><button type="button">Go back to list</button></a>
+</body>
