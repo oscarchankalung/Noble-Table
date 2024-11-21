@@ -58,7 +58,10 @@ pip freeze > requirements.txt
 
 ```bash
 # create a project using commend, django-admin
-django-admin startproject
+django-admin startproject [project_name]
+
+# change location to project folder
+cd [project-name]
 
 # create database on pre-installed app to store users
 python manage.py migrate
@@ -111,7 +114,7 @@ javascript, image, CSS
 
 ```bash
 # create an app using 
-python manage.py startapp APP
+python manage.py startapp [app_name]
 
 # run developmental server
 python manage.py runserver
@@ -126,6 +129,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "NEW_APP",
+    "app_name",
 ]
 ```
