@@ -24,10 +24,12 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index),
     path("restaurants/", views.RestaurantListView.as_view(), name="restaurant_list"),
-    path("restaurants/search-cuisine/<cuisine>/", views.RestaurantSearchView.as_view(), name="restaurant_cuisine"),
-    path("restaurants/search-city/<city>/", views.RestaurantSearchView.as_view(), name="restaurant_city"),
+    path("restaurants/search-cuisine/<str:cuisine>/", views.RestaurantSearchView.as_view(), name="restaurant_cuisine"),
+    path("restaurants/search-city/<str:city>/", views.RestaurantSearchView.as_view(), name="restaurant_city"),
     path("restaurants/search/", views.RestaurantSearchView.as_view(), name="restaurant_search"),
     path("restaurant/<int:pk>/", views.RestaurantDetailView.as_view(), name="restaurant_detail"),
+    path("api/v1/restaurants/", views.RestaurantListAPIView.as_view(), name="restaurant_api_list"),
+    path("api/v1/restaurant/<int:pk>", views.RestaurantDetailAPIView.as_view(), name="restaurant_api_detail"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -55,7 +55,7 @@
               <p>No review</p>
               {% else %}
                 {% for review in object.review_set.all %}
-                  <p>{{ review.rating }} : {{ review.comment }}</p>
+                  <p>Rating: {{ review.rating }}, {{ review.comment }}</p>
                 {% endfor %}
               {% endif %}
               

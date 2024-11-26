@@ -2,8 +2,26 @@ from typing import Any
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
+from rest_framework import generics
 
 from .models import Restaurant
+from .serializers import RestaurantListSerializer, RestaurantDetailSerializer
+
+'''
+API Views
+'''
+
+class RestaurantListAPIView(generics.ListAPIView):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantListSerializer
+
+class RestaurantDetailAPIView(generics.RetrieveAPIView):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantDetailSerializer
+
+'''
+Template Views
+'''
 
 def index(request):
     return HttpResponse("index")
@@ -58,6 +76,3 @@ class RestaurantSearchView(ListView):
 
 class RestaurantDetailView(DetailView):
     model = Restaurant
-
-# Persian/Iranian
-# Tapas/Small Plates
