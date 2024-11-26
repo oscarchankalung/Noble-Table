@@ -11,7 +11,7 @@ API_KEY = "XvjYqbn8DC8HN_eYPfE_w9vI-YBeuYN80lDtUtM1pFWrD4Ty3tG4mAodP_qOB3Noc4heA
 url = "https://api.yelp.com/v3/businesses/search"
 headers = {"Authorization": f"Bearer {API_KEY}"}
 params = {"term": "restaurants", "location": "California", "limit": 50}
-path = "/Users/n/Desktop/Oscar/noble-table/20241119-python-web-development-with-django/django_rests/businesses/uploads"
+path = "/Users/n/Downloads/noble-table/20241119-python-web-development-with-django/django_rests/businesses/uploads"
 
 # New York City
 # Chicago
@@ -35,7 +35,7 @@ class Command(BaseCommand):
 
         for res in data["businesses"]:
             try:
-                cuisine = res.get("categories")[0].get("title", "")
+                cuisine = res.get("categories")[0].get("title", "").replace("/", " | ")
             except:
                 cuisine = ""
 
