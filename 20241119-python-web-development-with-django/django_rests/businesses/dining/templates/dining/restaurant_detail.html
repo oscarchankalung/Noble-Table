@@ -48,7 +48,17 @@
               <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">{{ object.name }}</h1>
               <h1 class="text-800 fs-4">{{ object.rating }} / {{ object.review_count }} review</h1>
               <h1 class="text-800 fs-4">{{ object.price }} / {{ object.cuisine }}</h1>
-              <h1 class="text-800 fs-4">{% block object.price %}{% endblock %}</h1>
+
+              <h1 class="text-800 fs-4 mt-5">Reviews</h1>
+
+              {% if not object.review_set.all %}
+              <p>No review</p>
+              {% else %}
+                {% for review in object.review_set.all %}
+                  <p>{{ review.rating }} : {{ review.comment }}</p>
+                {% endfor %}
+              {% endif %}
+              
               <div class="mt-5">  
                 <a href={% url "restaurant_list" %}>
                   <button class="btn btn-danger">Back to list</button>
