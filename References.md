@@ -36,3 +36,8 @@
 Django FAQ - https://docs.djangoproject.com/en/5.1/faq/
 Django Model Field - https://docs.djangoproject.com/en/5.1/ref/models/fields/
 Django Rest Framework - https://www.django-rest-framework.org/
+
+## Project
+
+https://github.com/sippybee/pingmewine_new
+https://winecopilot.com/store/wines/?tags=Complex&country=United+States
