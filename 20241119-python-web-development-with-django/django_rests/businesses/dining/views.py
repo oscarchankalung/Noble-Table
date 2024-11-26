@@ -15,30 +15,49 @@ class RestaurantListView(ListView):
         context = super().get_context_data(**kwargs)
         restaurants = context["object_list"]
         cities = set([r.city for r in restaurants])
+        cuisines = set([r.cuisine for r in restaurants])
         
         context["title"] = "All Restaurants"
         context["cities"] = cities
+        context["cuisines"] = cuisines
         context["number_of_restaurant"] = len(restaurants)
         return context
 
-class RestaurantFilterCityView(ListView):
+class RestaurantSearchView(ListView):
     model = Restaurant
-    
+
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
+        city = self.request.GET.get("city") or self.kwargs.get("city")
+        cuisine = self.request.GET.get("cuisine") or self.kwargs.get("cuisine")
+        url_name = self.request.resolver_match.url_name
+
+        print(url_name, city, cuisine)
+
         restaurants = context["object_list"]
-        cities = set([r.city for r in restaurants])
+        filtered_restaurants = restaurants
+
+        # kwargs and request 
+        if city:
+            filtered_restaurants = restaurants.filter(city__icontains = city)
+        if cuisine:
+            filtered_restaurants = restaurants.filter(cuisine__icontains = cuisine)
         
-        city = self.kwargs["city"].lower()
-        city = " ".join([w.capitalize() for w in city.split()])
-        filtered_restaurants = restaurants.filter(city__icontains = city)
-        
-        context["title"] = f"Restaurants in {city}"
-        context["cities"] = cities
+        # kwargs
+        if url_name == "restaurant_city":
+            context["cities"] = set([r.city for r in restaurants])
+        if url_name == "restaurant_cuisine":
+            context["cuisines"] = set([r.cuisine for r in restaurants])
+
+        context["title"] = "Restaurants Search"
         context["city"] = city
+        context["cuisine"] = cuisine
         context["number_of_restaurant"] = len(filtered_restaurants)
         context["object_list"] = filtered_restaurants
         return context
 
 class RestaurantDetailView(DetailView):
     model = Restaurant
+
+# Persian/Iranian
+# Tapas/Small Plates

@@ -189,19 +189,31 @@
         <h1 class="fw-light">{{ title }}</h1>
         <p class="lead text-body-secondary">Something short and leading about the collection below-its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
         <p>
-          {% if cities %}
-          <p>
-            {% for city in cities %}
-            <a href="{% url "restaurant_city" city=city %}" class="btn btn-primary my-2">{{ city }}</a>
-            {% endfor %}
-          </p>
-          {% endif %}
+        {% if cities %}
+        <p>
+          {% for city in cities %}
+          <a href="{% url 'restaurant_city' city=city %}" class="btn btn-primary my-2">{{ city }}</a>
+          {% endfor %}
+        </p>
+        {% endif %}
 
-          {% if city and number_of_restaurant %}
-            <p><a href="{% url "restaurant_list" %}" class="btn btn-primary my-2">All Cities</a></p>
-          {% endif %}
+        {% if cuisines %}
+        <p>
+          {% for cuisine in cuisines %}
+          <a href="{% url 'restaurant_cuisine' cuisine=cuisine %}" class="btn btn-secondary my-2">{{ cuisine }}</a>
+          {% endfor %}
+        </p>
+        {% endif %}
+        
+        {% if city or cuisine %}
+          <p><a href="{% url 'restaurant_list' %}" class="btn btn-check my-2">All</a></p>
+        {% endif %}
 
+        {% if number_of_restaurant %}
           <p>{{ number_of_restaurant }} restaurants found</p>
+        {% else %}
+          <p>No restaurant found</p>
+        {% endif %}
         </p>
       </div>
     </div>
