@@ -1,4 +1,13 @@
 from django.contrib import admin
-from .models import Restaurant
+from .models import Restaurant, Review
 
-admin.site.register(Restaurant)
+class ReivewInline(admin.TabularInline):
+    model = Review
+
+class RestaurantAdmin(admin.ModelAdmin):
+    inlines = [
+        ReivewInline
+    ]
+
+admin.site.register(Restaurant, RestaurantAdmin)
+admin.site.register(Review)

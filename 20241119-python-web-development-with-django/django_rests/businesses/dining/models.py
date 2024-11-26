@@ -19,3 +19,11 @@ class Restaurant(models.Model):
     
     def get_absolute_url(self):
         return reverse("restaurant_detail", kwargs={"pk": self.pk})
+
+class Review(models.Model):
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, null=True)
+    rating = models.FloatField(null=True)
+    comment = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"{self.restaurant}, {self.rating}, {self.comment[:10]}"
