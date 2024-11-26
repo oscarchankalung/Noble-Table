@@ -1,13 +1,72 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant</title>
-</head>
-<body>
-    <h1>{{ object.name }}</h1>
-    <h3>{{ object.rating }} {{ object.review_count }} review</h3>
-    <h3>{{ object.price }} {{ object.cuisine }}</h3>
-    <a href={% url "restaurant_list" %}><button type="button">Go back to list</button></a>
-</body>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restaurant Detail</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'dining/foodwagon/img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'dining/foodwagon/img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'dining/foodwagon/img/favicons/favicon-16x16.png' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'dining/foodwagon/img/favicons/favicon.ico' %}">
+    <link rel="manifest" href="{% static 'dining/foodwagon/img/favicons/manifest.json' %}">
+    <meta name="msapplication-TileImage" content="{% static 'dining/foodwagon/img/favicons/mstile-150x150.png' %}">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="{% static 'dining/foodwagon/css/theme.css' %}" rel="stylesheet" />
+  </head>
+
+
+  <body>
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand d-inline-flex" href="index.html"><img class="d-inline-block" src="{% static 'dining/foodwagon/img/gallery/logo.svg' %}" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">foodwaGon</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 my-2 mt-lg-0" id="navbarSupportedContent">
+            <div class="mx-auto pt-5 pt-lg-0 d-block d-lg-none d-xl-block">
+              <p class="mb-0 fw-bold text-lg-center">Deliver to: <i class="fas fa-map-marker-alt text-warning mx-2"></i><span class="fw-normal">Current Location </span><span>Noble Table</span></p>
+            </div>
+            <form class="d-flex mt-4 mt-lg-0 ms-lg-auto ms-xl-0">
+              <div class="input-group-icon pe-2"><i class="fas fa-search input-box-icon text-primary"></i>
+                <input class="form-control border-0 input-box bg-100" type="search" placeholder="Search Food" aria-label="Search" />
+              </div>
+              <button class="btn btn-white shadow-warning text-warning" type="submit"> <i class="fas fa-user me-2"></i>Login</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <section class="py-5 overflow-hidden bg-primary" id="home">
+        <div class="container">
+          <div class="row flex-center">
+            <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
+              <img class="img-fluid" src="/uploads{{ object.image.url }}" alt="{{ object.title }}" />
+            </div>
+            <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
+              <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">{{ object.name }}</h1>
+              <h1 class="text-800 fs-4">{{ object.rating }} / {{ object.review_count }} review</h1>
+              <h1 class="text-800 fs-4">{{ object.price }} / {{ object.cuisine }}</h1>
+              <h1 class="text-800 fs-4">{% block object.price %}{% endblock %}</h1>
+              <div class="mt-5">  
+                <a href={% url "restaurant_list" %}>
+                  <button class="btn btn-danger">Back to list</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="vendors/fontawesome/all.min.js"></script>
+    <script src="{% static 'dining/foodwagon/js/theme.js' %}"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;display=swap" rel="stylesheet">
+  </body>
+
+</html>
