@@ -39,6 +39,6 @@ Django Rest Framework - https://www.django-rest-framework.org/
 
 ## Project
 
-https://github.com/sippybee/pingmewine_new
+https://github.com/sippybee/sippybeewebapp
 https://winecopilot.com/store/wines/?tags=Complex&country=United+States
 https://shopify.dev/docs/api
