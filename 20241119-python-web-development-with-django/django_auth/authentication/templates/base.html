@@ -1,0 +1,17 @@
+{% load transform_tags %}
+{% include "_menu.html" %}
+<h1>This is base</h1>
+<p>message: {{ message }}</p>
+<p>message: {{ message | to_upper }}</p>
+<p>message: {{ message | to_lower }}</p>
+<p>number: {{ number | to_dollar }}</p>
+
+<div style="color:red">
+  {% block apple %}
+  {% endblock apple %}
+</div>
+
+<div style="color:orange">
+  {% block orange %}
+  {% endblock orange %}
+</div>
