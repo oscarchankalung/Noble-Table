@@ -37,6 +37,11 @@ Django FAQ - https://docs.djangoproject.com/en/5.1/faq/
 Django Model Field - https://docs.djangoproject.com/en/5.1/ref/models/fields/
 Django Rest Framework - https://www.django-rest-framework.org/
 
+## Authentication
+
+Auth0 - https://auth0.com/
+JWT - https://jwt.io/
+
 ## Project
 
 https://github.com/sippybee/sippybeewebapp
