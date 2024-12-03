@@ -9,6 +9,8 @@ from django.utils.translation import gettext_lazy as _
 
 from .models import Account
 
+list_permission = ["is_active", "is_personal", "is_organization", "is_admin", "is_staff", "is_superuser"]
+
 class AccountCreationForm(forms.ModelForm):
     """
     A form for creating new account,
@@ -21,7 +23,7 @@ class AccountCreationForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        fields = ["email"]
+        fields = ("email",)
     
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -50,10 +52,9 @@ class AccountChangeForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        fields = ["email", "password", "is_active", "is_admin", "is_personal", "is_organization"]
+        fields = ["email", "password"] + list_permission
 
 class AccountAdmin(UserAdmin):
-    list_permission = ["is_active", "is_personal", "is_organization", "is_admin", "is_superuser", "is_staff"]
 
     # The fields to be used in displaying the Account model.
     # These override the definitions on the UserAdmin
@@ -61,12 +62,14 @@ class AccountAdmin(UserAdmin):
     fieldsets = (
         (None, {"fields": ("email", "password")}),
         (_("Permissions"), {"fields": list_permission + ["user_permissions"]}),
-        (_("Important Dates"), {"fields": ("date_joined", "last_login")}),
+        (_("Important Dates"), {"fields": ("last_login", "date_joined")}),
     )
 
     # add_fieldsets is not a standard ModelAdmin attribute.
     # AccountAdmin overrides get_fieldsets to use this attribute when creating an account.
-    # add_fieldsets = [(None, {"classes": ("wide",), "fields": ("email", "password1", "password2")})]
+    add_fieldsets = (
+        (None, {"classes": ("wide",), "fields": ("email", "password1", "password2")}),
+    )
 
     # The forms to add and change account instances
     form = AccountChangeForm
