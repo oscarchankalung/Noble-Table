@@ -30,6 +30,7 @@
 - HTML Color Codes - https://htmlcolorcodes.com/
 - The Rick and Morty API - https://rickandmortyapi.com/
 - Yelp API - https://docs.developer.yelp.com/docs/fusion-intro
+- Modern JavaScript for Django Developers - https://www.saaspegasus.com/guides/modern-javascript-for-django-developers/
 
 ## Django
 
