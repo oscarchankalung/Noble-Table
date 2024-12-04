@@ -1,0 +1,5 @@
+<form action="{% url 'form_email' %}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<p>{{form}}</p>
+<input type="submit" value="save"/>
+</form>

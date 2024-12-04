@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.views import View
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from .models import Post
+from .forms import EmailForm
 
 def index(request):
     message = "Hey this is my Blog app!"
@@ -44,3 +47,23 @@ class PostUpdateView(UpdateView):
 class PostDeleteView(DeleteView):
     model = Post
     success_url = reverse_lazy("post_list")
+
+class EmailFormView(View):
+    form_class = EmailForm
+    template_name = "blog/form_email.html"
+    success_url = "post_list"
+
+    def get(self, request):
+        form = self.form_class
+        return render(request, self.template_name, {"form":form})
+    
+    def form_valid(self, form):
+        form.send_email()
+        return super(EmailFormView, self).form_valid()
+    
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            print("valid")
+            form.send_email()
+            return HttpResponse("Email sent successfully")

@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
+
 from blog import views
 
 urlpatterns = [
@@ -29,6 +30,7 @@ urlpatterns = [
     path("post/create/", views.PostCreateView.as_view(), name="post_create"),
     path("post/update/<int:pk>/", views.PostUpdateView.as_view(), name="post_update"),
     path("post/delete/<int:pk>/", views.PostDeleteView.as_view(), name="post_delete"),
+    path("contact-us/", views.EmailFormView.as_view(), name="form_email"),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
