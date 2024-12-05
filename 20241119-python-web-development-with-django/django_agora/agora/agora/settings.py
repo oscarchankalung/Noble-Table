@@ -37,8 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles", 
+
+    # Applications
     "account",
     "post"
+
+    # Helpers
+    "multiselectfield",
 ]
 
 AUTH_USER_MODEL = "account.Account"

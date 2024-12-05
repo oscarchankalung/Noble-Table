@@ -1,19 +1,28 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
+from multiselectfield import MultiSelectField
 
 from .managers import CustomUserManager
+from .model_choices import Choices
 
 class Account(AbstractUser):
     username = None
     first_name = None
     last_name = None
     groups = None
-    email = models.EmailField(_("email address"), max_length=255, unique=True)
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
-    is_personal = models.BooleanField(default=True)
-    is_organization = models.BooleanField(default=False)
+
+    email = models.EmailField(_("email"), max_length=255, unique=True)
+    is_personal = models.BooleanField(
+        _("personal"),
+        default=True,
+        help_text=_("Designates whether the user is personal with limited features."),
+    )
+    is_profit = models.BooleanField(
+        _("profit"),
+        default=False,
+        help_text=_("Designates whether the user is profit with more features."),
+    )
 
     objects = CustomUserManager()
 
@@ -21,6 +30,7 @@ class Account(AbstractUser):
     REQUIRED_FIELDS = []
 
     class Meta:
+        ordering = ["email"]
         verbose_name = _("account")
         verbose_name_plural = _("accounts")
         abstract = False
@@ -28,40 +38,24 @@ class Account(AbstractUser):
     def __str__(self):
         return f"{self.email}"
 
-"""
 class Profile(models.Model):
-    class Gender(models.TextChoices):
-        FEMALE = "F", _("Female")
-        MALE = "M", _("Male")
-        NON_BINARY = "NB", _("Non Binary")
-    
-    class Pronouns(models.TextChoices):
-        FEMALE = "F", _("She/Her")
-        MALE = "M", _("He/Him")
-        NON_BINARY = "NB", _("They/Them")
-
-    class Orientation(models.TextChoices):
-        HETEROSEXUAL = "HETER", _("Hetersexual")
-        HOMOSEXUAL = "HOMO", _("Homosexual")
-        BISEXUAL = "BI", _("Bisexual")
-    
-    class LookingFor(models.TextChoices):
-        LONG_TERM = "LONG", _("Long-Term Relationship")
-        SHORT_TERM = "SHORT", _("Short-Term Relationship")
-        FRIEND = "FRIEND", _("Friendship")
 
     account = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True)
     nickname = models.CharField(max_length=12, unique=True, blank=False)
     date_of_birth = models.DateField(_("date of birth"), null=True)
     city = models.CharField(max_length=100, blank=True) # to add options
-    gender = models.CharField(max_length=4, choices=Gender, blank=True)
-    pronouns = models.CharField(max_length=4, choices=Pronouns, blank=True)
-    orientation = models.CharField(max_length=10, choices=Orientation, blank=True)
-    looking_for = models.CharField(_("looking for"), max_length=10, choices=LookingFor, blank=True)
+
+    GENDER, PRONOUNCES, ORIENTATION, LOOKINF_FOR = Choices
+
+    gender = MultiSelectField(choices=GENDER, max_choices=3, max_length=3)
+    pronouns = MultiSelectField(choices=PRONOUNCES, max_choices=3, max_length=3)
+    orientation = MultiSelectField(choices=ORIENTATION, max_choices=3, max_length=3)
+    looking_for = MultiSelectField(choices=LOOKINF_FOR)
 
     def __str__(self):
         return f"{self.nickname} from {self.city}"
 
+"""
 class Relationship():
     subject = models.ForeignKey(Profile, on_delete=models.CASCADE, primary_key=True)
     object = models.OneToOneField(Profile, on_delete=models.CASCADE) # cannot be subject

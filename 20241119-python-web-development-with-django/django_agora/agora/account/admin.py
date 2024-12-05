@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 from .models import Account
 
-list_permission = ["is_active", "is_personal", "is_organization", "is_admin", "is_staff", "is_superuser"]
+list_permission = ["is_active", "is_personal", "is_profit", "is_staff", "is_superuser"]
 
 class AccountCreationForm(forms.ModelForm):
     """
