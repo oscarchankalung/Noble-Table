@@ -20,3 +20,9 @@ post = {
   "is_long": bool,
 }
 ```
+
+## Architect
+
+* Database: PostgreSQL
+* Backend: Django and Django REST framework
+* Frontend: Hybrid use of Django and React
