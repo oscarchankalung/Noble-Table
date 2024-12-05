@@ -2,10 +2,20 @@
 
 ## Features
 
-**App ~ Facebook**
+**App ~ Facebook / FetLife**
 
-* Account / Profile / Relationships
-* Post > UpdatePost + BlogPost
-* ~~Fourm~~
-* ~~Event~~
-* ~~Message~~
+### Current
+
+```
+1. Account: Account / Profile / Relationship
+2. Feed: Post > UpdatePost + BlogPost
+```
+
+### Backlog
+
+```
+3. Group
+4. Event
+5. Message
+6. Membership > PersonalMembership + ProfitMembership
+```
