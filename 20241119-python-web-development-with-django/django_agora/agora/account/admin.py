@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 
 from django import forms
 from django.contrib.auth.admin import UserAdmin
@@ -7,7 +7,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-from .models import Account
+from .models import Account, Profile, Relationship
 
 list_permission = ["is_active", "is_personal", "is_profit", "is_staff", "is_superuser"]
 
@@ -82,4 +82,6 @@ class AccountAdmin(UserAdmin):
     filter_horizontal = ()
 
 admin.site.register(Account, AccountAdmin)
+admin.site.register(Profile)
+admin.site.register(Relationship)
 admin.site.unregister(Group)

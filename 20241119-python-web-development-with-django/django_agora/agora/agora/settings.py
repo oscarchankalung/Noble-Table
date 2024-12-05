@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # Applications
     "account",
-    "post"
+    "post",
 
     # Helpers
     "multiselectfield",

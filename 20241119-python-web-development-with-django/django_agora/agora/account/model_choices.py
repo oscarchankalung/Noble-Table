@@ -2,7 +2,10 @@ class Choices:
     GENDER = (
         (1, "Female"),
         (2, "Male"),
-        (3, "Non Binary")
+        (3, "Non Binary"),
+        (4, "Gender 4"),
+        (5, "Gender 5"),
+        (6, "Gender 6"),
     )
 
     PRONOUNCES = (
